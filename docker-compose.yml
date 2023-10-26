@@ -9,6 +9,8 @@ services:
       - minha-rede
     depends_on:
       - backend
+    command: >
+      sh -c "git pull origin main && nginx -g 'daemon off;'"
 
   backend:
     image: devandresilva/backend:latest
