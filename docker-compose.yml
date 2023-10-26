@@ -11,12 +11,6 @@ services:
       - minha-rede
     depends_on:
       - backend
-    command: 
-      - sh
-      - -c
-      - |
-        git pull
-        tail -f /dev/null
 
   backend:
     build:
@@ -26,6 +20,8 @@ services:
       - "3000:3000"
     networks:
       - minha-rede
+    depends_on:
+      - db
     container_name: backend
     command: >
       /bin/sh -c "
